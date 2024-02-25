@@ -1,19 +1,21 @@
-CC=gcc
+CC=g++
 
-SOURCE_DIR=./src/*.c
+SOURCE_DIR=src/*.cpp
 
 EXECUTABLE=game
 
-CFLAGS=-Wall -std=c99
+CFLAGS=-Wall -Wextra -std=c++11
 
 LIBS=`sdl2-config --libs --cflags` -lm
+
+INCLUDES=src/includes/**/**/*.cpp
 
 # Runs all the commands
 all: build run
 
 # Compiles the source code
 build:
-	$(CC) $(CFLAGS) $(SOURCE_DIR) $(LIBS) -o $(EXECUTABLE)
+	$(CC) $(CFLAGS) $(LIBS) -o $(EXECUTABLE) $(SOURCE_DIR) $(INCLUDES)
 
 # Runs the game
 run:
